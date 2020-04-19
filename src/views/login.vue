@@ -1,53 +1,19 @@
 <template>
   <div>
     <el-card class="login-form-layout">
-      <el-form
-        autocomplete="on"
-        :model="loginForm"
-        ref="loginForm"
-        label-position="left"
-      >
-        <div style="text-align: center">
-          <svg-icon icon-class="login-mall" style="width: 56px;height: 56px;color: #409EFF"></svg-icon>
-        </div>
-        <h2 class="login-title color-main">spring-study</h2>
+      <el-form  autocomplete="on"  :model="loginForm"   ref="loginForm"  label-position="left" >
+        <h2 class="login-title color-main">vue-study</h2>
         <el-form-item prop="username">
-          <el-input
-            name="username"
-            type="text"
-            v-model="loginForm.username"
-            autocomplete="on"
-            placeholder="请输入用户名"
-          >
-            <span slot="prefix">
-              <svg-icon icon-class="user" class="color-main"></svg-icon>
-            </span>
+          <el-input  name="username"  type="text"   v-model="loginForm.username"  autocomplete="on"  placeholder="请输入用户名">
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input
-            name="password"
-            :type="pwdType"
-            @keyup.enter.native="handleLogin"
-            v-model="loginForm.password"
-            autocomplete="on"
-            placeholder="请输入密码"
-          >
-            <span slot="prefix">
-              <svg-icon icon-class="password" class="color-main"></svg-icon>
-            </span>
-            <span slot="suffix" @click="showPwd">
-              <svg-icon icon-class="eye" class="color-main"></svg-icon>
-            </span>
+          <el-input  name="password"  :type="pwdType"  @keyup.enter.native="handleLogin"  v-model="loginForm.password"  autocomplete="on"  placeholder="请输入密码">
+           <!--  <span slot="suffix" @click="showPwd">  </span> -->
           </el-input>
         </el-form-item>
         <el-form-item style="margin-bottom: 60px">
-          <el-button
-            style="width: 100%"
-            type="primary"
-            :loading="loading"
-            @click.native.prevent="handleLogin"
-          >登录</el-button>
+          <el-button  style="width: 100%;background-color:red"  type="primary"  :loading="loading"  @click.native.prevent="handleLogin">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -60,24 +26,27 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "admin",
-        password: "123456"
+        username: "",
+        password: ""
       },
       loading: false,
       pwdType: "password",
     };
   },
   methods: {
-    showPwd() {
+   /* showPwd() {
       if (this.pwdType === "password") {
         this.pwdType = "";
       } else {
         this.pwdType = "password";
       }
-    },
+    }, */
     handleLogin() {
+      console.log("11111");
       this.$refs.loginForm.validate(valid => {
+        console.log("11112");
         if (valid) {
+          console.log("11113");
           this.loading = true;
           this.$store
             .dispatch("Login", this.loginForm)
@@ -97,6 +66,7 @@ export default {
               }
             })
             .catch(() => {
+               console.log("handleLogin error");
               this.loading = false;
             });
         } else {
@@ -117,7 +87,7 @@ export default {
   right: 0;
   width: 360px;
   margin: 140px auto;
-  border-top: 10px solid #409eff;
+  border-top: 10px solid red;
 }
  
 .login-title {
@@ -125,7 +95,7 @@ export default {
 }
  
 .login-center-layout {
-  background: #409eff;
+  background: red;
   width: auto;
   height: auto;
   max-width: 100%;

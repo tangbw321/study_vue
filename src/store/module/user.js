@@ -10,6 +10,7 @@ const user = {
           commit('') //提交一个 mutation，通知状态改变
           resolve(response) //将结果封装进 Promise
         }).catch(error => {
+          console.log("登录失败")
           reject(error)
         })
       })
