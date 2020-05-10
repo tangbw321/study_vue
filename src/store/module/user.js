@@ -12,7 +12,7 @@ const user = {
         }).catch(error => {
           console.log("登录失败")
           reject(error)
-        })
+        }) 
       })
     },
   }

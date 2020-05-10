@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "",
-        password: ""
+        username: "admin",
+        password: "admin"
       },
       loading: false,
       pwdType: "password",
